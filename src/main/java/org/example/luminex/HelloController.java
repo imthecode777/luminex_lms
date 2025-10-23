@@ -20,40 +20,41 @@ public class HelloController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         recentlyAdded = new ArrayList<>(recentlyAdded());
-        try {
-            for (int i = 0; i < recentlyAdded.size(); i++) {
+        try{
+            for(int i=0; i<recentlyAdded.size(); i++){
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("card.fxml"));
                 HBox cardBox = fxmlLoader.load();
                 CardController cardController = fxmlLoader.getController();
                 cardController.setData(recentlyAdded.get(i));
                 cardLayout.getChildren().add(cardBox);
+
             }
-        } catch (IOException e) {
+        }catch (IOException e){
             e.printStackTrace();
         }
     }
 
-    private List<Book> recentlyAdded() {
+    private List<Book> recentlyAdded(){
         List<Book> ls = new ArrayList<>();
         Book book = new Book();
-        book.setName("RICH DAD\nPOOR DAD");
-        book.setImageSrc("/img/rich_dad_poor_dad.jpg");
-        book.setAuthor("Robert T. Kiyosaki");
+        book.setName("Rich Dad\nPoor Dad");
+        book.setImageSrc("/org/example/luminex/img/no-cats-in-the-library-9781665933681_lg.jpg");
+        book.setAuthor("Robert T.Kiyosaki");
+        ls.add(book);
+
+
+        book = new Book();
+        book.setName("Atomic Habits");
+        book.setImageSrc("/org/example/luminex/img/no-cats-in-the-library-9781665933681_lg.jpg");
+        book.setAuthor("James Clear");
         ls.add(book);
 
         book = new Book();
-        book.setName("RICH DAD\nPOOR DAD");
-        book.setImageSrc("/img/rich_dad_poor_dad.jpg");
-        book.setAuthor("Robert T. Kiyosaki");
+        book.setName("The Alchemist");
+        book.setImageSrc("/org/example/luminex/img/no-cats-in-the-library-9781665933681_lg.jpg");
+        book.setAuthor("Paulo Coelho");
         ls.add(book);
-
-        book = new Book();
-        book.setName("RICH DAD\nPOOR DAD");
-        book.setImageSrc("/img/rich_dad_poor_dad.jpg");
-        book.setAuthor("Robert T. Kiyosaki");
-        ls.add(book);
-
         return ls;
     }
 }
